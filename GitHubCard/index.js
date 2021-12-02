@@ -82,3 +82,51 @@ followersArray.forEach(user => {
     luishrd
     bigknell
 */
+function makeGitCard(obj) {
+  const card = document.createElement('div');
+  const userImg = document.createElement('img');
+  const cardInfo = document.createElement('div');
+  const name = document.createElement('h3');
+  const userName = document.createElement('p');
+  const location = document.createElement('p');
+  const profile = document.createElement('p');
+  const githubAddress = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+
+  // Adding classes to elements
+  card.classList.add('card');
+  cardInfo.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
+
+   // Setting attributes on elements
+   userImg.setAttribute('src', obj.data.avatar_url);
+   githubAddress.setAttribute('href', obj.data.html_url);
+ 
+   // Setting text content on elements
+   name.textContent = obj.data.name;
+   userName.textContent = obj.data.login;
+   location.textContent = `Location: ${obj.data.location}`;
+   profile.textContent = 'Profile: ';
+   githubAddress.textContent = obj.data.html_url;
+   followers.textContent = `Followers: ${obj.data.followers}`;
+   following.textContent = `Following: ${obj.data.following}`;
+   bio.textContent = `Bio: ${obj.data.bio}`;
+   
+   
+   card.appendChild(userImg);
+   card.appendChild(cardInfo);
+   cardInfo.appendChild(name);
+   cardInfo.appendChild(userName);
+   cardInfo.appendChild(location);
+   cardInfo.appendChild(profile);
+   profile.appendChild(githubAddress);
+   cardInfo.appendChild(followers);
+   cardInfo.appendChild(following);
+   cardInfo.appendChild(bio);
+ 
+   console.log(card);
+   return card;
+ }
